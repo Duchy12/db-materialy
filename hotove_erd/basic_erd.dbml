@@ -1,0 +1,40 @@
+Table "Uzivatele" {
+  "ID" int [pk]
+  "Email" varchar(255)
+  "Heslo" varchar(255)
+  "Typ_Uctu" varchar(255)
+}
+
+Table "Umelci" {
+  "ID" int [pk]
+  "Jmeno" varchar(255)
+  "Biografie" text
+}
+
+Table "Skladby" {
+  "ID" int [pk]
+  "Nazev" varchar(255)
+  "Delka" int
+  "Zanr" varchar(255)
+  "Rok_Vydani" int
+  "ID_Umelce" int
+}
+
+Table "Playlisty" {
+  "ID" int [pk]
+  "Nazev" varchar(255)
+  "ID_Uzivatele" int
+}
+
+Table "Playlist_Skladby" {
+  "ID_Playlistu" int
+  "ID_Skladby" int
+}
+
+Ref:Umelci.ID ?<? Skladby.ID_Umelce
+
+Ref:Uzivatele.ID ?<? Playlisty.ID_Uzivatele
+
+Ref:Playlisty.ID ?<? Playlist_Skladby.ID_Playlistu
+
+Ref:Skladby.ID ?<? Playlist_Skladby.ID_Skladby
