@@ -32,7 +32,7 @@ Při návrhu databázového schématu je výběr správného datového typu klí
 | DATOVÝ TYP | POPIS A VYUŽITÍ | PŘÍKLAD HODNOTY |
 | :--- | :--- | :--- |
 | **BOOLEAN** (nebo BIT) | Pravdivostní hodnota (pravda/nepravda). Relační databáze ji ukládají jako 1 nebo 0. Slouží jako příznaky (např. `is_active`, `is_deleted`). | `TRUE (1)`, `FALSE (0)` |
-| **BLOB / VARBINARY** | Ukládání surových binárních dat přímo do databáze (Binary Large Object). Využívá se pro zašifrovaná hesla, certifikáty nebo malé soubory/obrázky. | `0x89504E47...` |
+| **BLOB / VARBINARY** | Ukládání surových binárních dat přímo do databáze (Binary Large Object). Využívá se pro zašifrovaná hesla, certifikáty nebo malé soubory/obrázky. | `1000011` |
 | **JSON / JSONB** | Moderní typ pro ukládání strukturovaných dat ve formátu JSON. Databáze umožňuje dotazování přímo dovnitř JSON struktury (např. nastavení uživatele). | `'{"theme": "dark"}'` |
 
 ## 5 Best Practices a Doporučení
