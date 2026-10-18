@@ -110,7 +110,7 @@ LINES TERMINATED BY '\n' -- Čím končí nový řádek (newline)
 IGNORE 1 ROWS            -- Přeskočí první řádek (hlavičku s názvy sloupců)
 (Nazev, Cena);           -- Říkáme, do jakých sloupců se mají data nalít
 ```
-Notes: [Co je to newline?](https://en.wikipedia.org/wiki/Newline), [CSV Soubory]()
+Notes: [Co je to newline?](https://en.wikipedia.org/wiki/Newline), [CSV Soubory](https://github.com/Duchy12/db-materialy/blob/main/materialy/csv.md)
 
 
 ## 7. Export do CSV (Dump)
