@@ -20,4 +20,3 @@
 
 *Pokud jste všechny kroky provedli správně, vaše Plocha by po dokončení úkolu měla vypadat úplně stejně jako na začátku, aniž by na ní zůstaly jakékoliv zkušební soubory.*
 
-*cmd_helper.md používeje jen jako poslední možnost, pokud si nebudete vědět rady. Snažte se příkazy zadávat z paměti.*

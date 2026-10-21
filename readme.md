@@ -11,3 +11,4 @@
 | [Úvod do jazyka SQL](https://github.com/Duchy12/db-materialy/blob/main/materialy/sql_zaklady_db_a_SQL.md) |
 | [Datové typy v jazyce SQL](https://github.com/Duchy12/db-materialy/blob/main/materialy/sql_datove_typy.md)|
 | [Úvod do práce s MARIADB](https://github.com/Duchy12/db-materialy/blob/main/materialy/sql_intro.md) |
+| [Windows cmd crash course](https://github.com/Duchy12/db-materialy/blob/main/materialy/cmd_zadani.md) |
