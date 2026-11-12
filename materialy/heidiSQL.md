@@ -56,3 +56,48 @@ V této práci využijeme databázi `muj_eshop`, kterou jste vytvořili v předc
    * Vyberte **Exportovat databázi jako SQL...**
    * V okně nechte vše zaškrtnuté (Tabulky, Data) a dole v sekci "Výstup" zvolte, kam se má soubor uložit (např. na Plochu jako `zaloha_eshop.sql`).
    * Klikněte na Exportovat. Pokud byste si nyní omylem smazali databázi, pomocí tohoto souboru ji dokážete obnovit do původního stavu.
+
+## 3. Samostatná práce: Spojování tabulek (JOIN)
+
+V tabulce `Objednavka` máme uloženy pouze číselné identifikátory (ID zákazníka a ID produktu). Pro praktické výstupy (např. tisk faktury) potřebujeme zobrazit textové hodnoty. Nyní se naučíme tabulky dočasně spojit a vytáhnout z nich čitelná data.
+
+Všechny následující úkoly pište a spouštějte v **HeidiSQL** v záložce **Dotaz** (nezapomeňte spouštět klávesou `F9`).
+
+## Krok 1: Výpis objednávky se jménem zákazníka (První JOIN)
+Chceme vypsat všechny objednávky, ale místo čísla zákazníka chceme vidět jeho skutečné jméno.
+Zkopírujte si tento kód, spusťte ho a prozkoumejte jeho strukturu:
+
+```sql
+SELECT 
+    Objednavka.ID_Objednavky, 
+    Zakaznik.Jmeno, 
+    Objednavka.Kusu
+FROM Objednavka
+JOIN Zakaznik ON Objednavka.ID_Zakaznika = Zakaznik.ID_Zakaznika;
+```
+*Poznámka: Podmínka za klíčovým slovem ON definuje, přes jaké sloupce se obě tabulky propojují (tzv. cizí a primární klíč).*
+
+## Krok 2: Kompletní výpis objednávky (Vícenásobný JOIN)
+Předchozí dotaz nám ukázal jméno zákazníka, ale stále chybí název zakoupeného produktu. Přidáme tedy další propojení do tabulky `Produkt`.
+Upravte (nebo přepište) předchozí kód do této podoby:
+
+```sql
+SELECT 
+    Objednavka.ID_Objednavky, 
+    Zakaznik.Jmeno, 
+    Produkt.Nazev, 
+    Objednavka.Kusu
+FROM Objednavka
+JOIN Zakaznik ON Objednavka.ID_Zakaznika = Zakaznik.ID_Zakaznika
+JOIN Produkt ON Objednavka.ID_Produktu = Produkt.ID_Produktu;
+```
+
+## Krok 3: Výpočet celkové ceny (Samostatná úprava)
+Databáze umožňuje provádět aritmetické operace přímo v dotazu. V tabulce `Produkt` máme sloupec `Cena`. V tabulce `Objednavka` máme sloupec `Kusu`. 
+* **Úkol:** Upravte kód z Kroku 2. Do části `SELECT` přidejte další sloupec, který vynásobí cenu a počet kusů (`Produkt.Cena * Objednavka.Kusu`).
+* Tento nový výpočet pojmenujte (vytvořte alias) jako `Celkova_Cena` pomocí klíčového slova `AS` (např. `... Kusu, Produkt.Cena * Objednavka.Kusu AS Celkova_Cena`).
+* Spusťte dotaz (`F9`). Výsledkem bude tabulka obsahující přesnou částku k úhradě pro každou objednávku.
+
+## Krok 4: Filtrování spojených dat
+Je potřeba vypsat pouze ty objednávky, kde zakoupené množství zboží bylo **větší než 1 kus**.
+* **Úkol:** Na úplný konec vašeho fungujícího kódu z Kroku 3 připište klauzuli `WHERE Objednavka.Kusu > 1;`. Znovu spusťte dotaz a zkontrolujte, zda se výsledek správně vyfiltroval.
